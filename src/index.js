@@ -4,6 +4,7 @@ const cors = require("cors");
 const axios = require("axios");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/userRoute");
+const categoryRoute = require("./routes/categoryRoute");
 
 // api config
 dotenv.config();
@@ -28,6 +29,7 @@ app.post("/", (req, res) => {
 });
 
 app.use("/api/v1", userRoute);
+app.use("/api/v1", categoryRoute);
 
 // listner
 app.listen(port, () => {
