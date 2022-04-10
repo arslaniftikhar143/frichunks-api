@@ -36,7 +36,7 @@ router.put("/category/edit", async (req, res) => {
     categoryModel.findByIdAndUpdate(
       req.body._id,
       {
-        $set: { name: req.body.name },
+        $set: req.body,
       },
       (err) => {
         if (err) {
