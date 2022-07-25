@@ -26,6 +26,11 @@ mongoose.connect(process.env.MONGOURL, () => {
 });
 
 // api endpoints
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Welcome to frichunks api",
+  });
+});
 app.post("/", (req, res) => {
   res.status(200).json(req.body);
 });
