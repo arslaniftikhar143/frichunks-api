@@ -5,6 +5,7 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/userRoute");
 const categoryRoute = require("./routes/categoryRoute");
+const productModel = require("./models/productModel");
 
 // api config
 dotenv.config();
@@ -13,6 +14,7 @@ const port = process.env.PORT || 9000;
 
 // middlewares
 app.use(express.json());
+app.use(cors());
 
 // db config
 mongoose.connect(process.env.MONGOURL, () => {
@@ -30,6 +32,7 @@ app.post("/", (req, res) => {
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", categoryRoute);
+app.use("/api/v1", productModel);
 
 // listner
 app.listen(port, () => {

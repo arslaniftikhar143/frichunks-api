@@ -11,7 +11,7 @@ router.get("/user/get_all", async (req, res) => {
 });
 
 router.post("/user/register", async (req, res) => {
-  const { username, email, password, isAdmin } = req.body;
+  const { username, email, password, isAdmin, phone, address } = req.body;
   if (username === undefined) {
     res.status(300).send("enter username");
   } else if (email === undefined) {
@@ -33,10 +33,16 @@ router.post("/user/register", async (req, res) => {
             email: email,
             password: hash,
             isAdmin: isAdmin,
+            phone: phone,
+            address: address,
           }).save();
-          res
-            .status(200)
-            .json({ username: username, email: email, isAdmin: isAdmin });
+          res.status(200).json({
+            username: username,
+            email: email,
+            isAdmin: isAdmin,
+            phone: phone,
+            address: address,
+          });
         } catch (error) {
           console.log(err);
         }
