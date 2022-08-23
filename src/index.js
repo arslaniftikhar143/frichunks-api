@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const axios = require("axios");
 const dotenv = require("dotenv");
-const userRoute = require("./routes/userRoute");
-const categoryRoute = require("./routes/categoryRoute");
-const productModel = require("./models/productModel");
+const userRoute = require("./routes/userRoute.js");
+const categoryRoute = require("./routes/categoryRoute.js");
+const productRoute = require("./routes/productRoute.js");
+const orderRoute = require("./routes/orderRoute.js");
 
 // api config
 dotenv.config();
@@ -37,7 +38,8 @@ app.post("/", (req, res) => {
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", categoryRoute);
-app.use("/api/v1", productModel);
+app.use("/api/v1", productRoute);
+app.use("/api/v1", orderRoute);
 
 // listner
 app.listen(port, () => {
